@@ -24,44 +24,51 @@ const renderLicenseLink = function(license) {
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+// const renderLicenseSection = function(license) {
+//   if(license){
+//     return 
+//   }
+// }
 
 // TODO: Create a function to generate markdown for README
+// why is in not reading this function
 function generateMarkdown(data) {
+  const badge = renderLicenseBadge(data.license);
+  const link = renderLicenseLink(data.license);
   console.log(data.title)
   return `# ${data.title}\n
+  ${badge}
   ## Description\n
   ${data.description}\n
   ## Table of Contents\n
-  - [Installation](#installation)\n
-  - [Usage](#usage)\n
-  - [Contributions](#contributions)\n
-  - [Credits](#credits)\n
-  - [License](#license)\n
-  - [Tests](#test)\n
-  - [Questions](#questions)\n
+    - [Installation](#installation)\n
+    - [Usage](#usage)\n
+    - [Contributions](#contributions)\n
+    - [Credits](#credits)\n
+    - [License](#license)\n
+    - [Tests](#test)\n
+    - [Questions](#questions)\n
   ## Installation\n
-  ${sections.installation}\n
+  ${data.installation}\n
   ## Usage\n
   ${data.usage}\n
   ## Contributions\n
   ${data.contributions}\n
   ## Credits\n
-  ${section.credits}\n
+  ${data.credits}\n
   ## License\n
-  ${section.license}\n
+  ${licenseLink}\n
   ## Tests\n
-  ${section.tests}\n
+  ${data.tests}\n
   ## Questions\n
   Please visit my GitHub profile for more of my work:
-  ${data.name}${data.github}\n
+  ${data.username}\n
   For any questions about this application you can contact:
-  ${data.name}${data.email}
-
+  ${data.email}
 `;
 }
 
-renderLicenseBadge();
-renderLicenseLink();
+// renderLicenseBadge(data.license);
+// renderLicenseLink(data.license);
 
 module.exports = {generateMarkdown};

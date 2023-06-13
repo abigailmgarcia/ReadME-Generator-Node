@@ -4,9 +4,12 @@ const fs = require('fs');
 
 const generateMarkdown = require('./utils/generateMarkdown')
 
+// TODO: Create a function to initialize app
+function init() {
+    inquirer
+        .prompt([
 // TODO: Create an array of questions for user input
-const questions = [{
-    type: "input",
+  {  type: "input",
     message: "What is the title of your project?",
     name: "Title"
 }, {
@@ -23,60 +26,79 @@ const questions = [{
     name: "Installation"
 }, {
     type: "input",
-    message: "How is this app used?",
+    message: "How is this app used? Provide Instructions",
     name: "Usage"
 }, {
-    type: "input",
+    type: "list",
     message: " What License are you using?",
-    name: "License"
+    choices: ['None', 'MIT', 'Apache2.0', 'GNUGPLv3'],
+    name: "License",
+    default: "None"
 }, {
     type: "input",
     message: "Are there any contributors to your project?",
     name: "Contributors"
 }, {
-    type: "input",
-    message: "Did you use any resources to help you?",
+    type: "confirm",
+    message: "Did you use any resources to help you? ei: third parties or tutorials",
     name: "Credits"
-}, {
+},  {
+    type: 'input',
+    name: 'creditURL',
+    message: 'Enter the URL/Filepath for the collaborator, third-party asset, or tutorial:',
+    filter: (input) => `(${input})`,
+    when: (data) => data.walkthrough, // Only displays answer if the installation question is given a truthy value
+  }, {
     type: "input",
-    message: "What commands are needed to test this app?",
+    message: "How can you test this app?",
     name: "Tests"
 }, {
     type: "input",
-    messages: "contact info for any inquirers.",
+    messages: "Contact info for any inquirers.",
     name: "Questions"
 }, {
     type: "input",
     messages: "What is your github username?",
-    name: "Username"
+    name: "Username",
+    filter: (input) => `(malito:${input})`,
 }, {
     type: "input",
     messages: "What is your email address?",
-    name: "Email"
-}];
-
+    name: "Email",
+    filter: (input) => `(mailto:${input})`,
+}
+])
+.then ((data) => {
+    const markdown = generateMarkdown(data);
+    writeToFile('README.md', markdown);
+})
+.catch((err) =>{
+    console.log(err);
+})
+};
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
 
-    fs.writeFile(fileName, data, function (err) {
+    fs.writeFile(fileName, data, (err) => {
         console.log(fileName);
         console.log(data);
         if(err) {
             return console.log(err);
         } else {
-            console.log("success!");
+            console.log(" README.md file generated success!");
         }
     });
 }
 
-// TODO: Create a function to initialize app
-function init() {
-    inquirer.prompt(questions)
-        .then(function(data) {
-            // writeToFile("README.md", generateMarkdown(data)); //something is messing up right here
-            console.log(data);
-        });
-}
+// then((data) => {
+//     const sections = {
+//         credits: data.credits ? `${data.creditText}${data.creditURL}` : '',
+//     };
+//     fs.writeFile('README.mf', generateMarkdown.generateMarkdown(data, sections), (err) =>{
+//         err ? console.log(err) :  console.log('success!')
+//     })
+// })
+
 
 // Function call to initialize app
 init();

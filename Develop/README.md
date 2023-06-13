@@ -12,8 +12,11 @@
 
 ## Contributors
 
+## Credits
+
 ## Test
 
-## Questions
+## Username
 
-## Contact Info
+## Email
+

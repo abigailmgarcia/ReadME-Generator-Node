@@ -1,7 +1,6 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const utils = require('utils')
 
 const generatorMarkdown = require('./utils/generateMarkdown')
 
@@ -45,7 +44,7 @@ const questions = [{
 }, {
     type: "input",
     messages: "What is your github username and email?",
-    name: "Contact info"
+    name: "Contact Info"
 }];
 
 // TODO: Create a function to write README file
@@ -63,13 +62,13 @@ function writeToFile(fileName, data) {
 }
 
 // TODO: Create a function to initialize app
-// function init() {
-//     inquirer.prompt(questions)
-//         .then(function(data) {
-//             writeToFile("README.md", generatorMarkdown(data));
-//             console.log(data);
-//         });
-// }
+function init() {
+    inquirer.prompt(questions)
+        .then(function(data) {
+            writeToFile("README.md", generatorMarkdown(data));
+            console.log(data);
+        });
+}
 
 // Function call to initialize app
 init();

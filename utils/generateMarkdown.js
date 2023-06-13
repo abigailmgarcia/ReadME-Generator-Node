@@ -4,13 +4,23 @@ const renderLicenseBadge = function(license) {
   if (license === 'none') {
     return ''
   } else {
-    return `![License ${license}]`
+    return `![License ${license}](https://img.shields.io/badge/license-${license}-ff69b4)`
   }
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+const renderLicenseLink = function(license) {
+  if(license === 'MIT'){
+    return `For more information please refer to license listed in repo: [License: ${license}](https://mit-license.org/)`
+  } else if (license === 'Apache 2.0') {
+    return `For more information please refer to License listed in repo: [License: ${license}](https://choosealicense.com/licenses/apache-2.0/)`
+  } else if (license === 'GNU GPLv3') {
+    return `For more information please refer to License listed in rep: [License: ${license}](https://www.gnu.org/licenses/quick-guide-gplv3.html)`
+  } else {
+    return ''
+  };
+};
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
@@ -50,5 +60,8 @@ function generateMarkdown(data) {
 
 `;
 }
+
+renderLicenseBadge();
+renderLicenseLink();
 
 module.exports = {generateMarkdown};

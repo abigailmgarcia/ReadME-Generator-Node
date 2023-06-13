@@ -47,7 +47,7 @@ function init() {
     name: 'creditURL',
     message: 'Enter the URL/Filepath for the collaborator, third-party asset, or tutorial:',
     filter: (input) => `(${input})`,
-    when: (data) => data.walkthrough, // Only displays answer if the installation question is given a truthy value
+    when: (data) => data.creditURL // Only displays answer if the installation question is given a truthy value
   }, {
     type: "input",
     message: "How can you test this app?",
@@ -69,7 +69,7 @@ function init() {
 }
 ])
 .then ((data) => {
-    const markdown = generateMarkdown(data);
+    const markdown = generateMarkdown();
     writeToFile('README.md', markdown);
 })
 .catch((err) =>{

@@ -109,6 +109,13 @@ function init() {
     default: false
 }, 
 {
+    type: "input",
+    name: "creditText",
+    message: "enter collaborater/third party assist:",
+    filter: (input) => `[${input}]`,
+    when: (data) => data.walkthrough,
+},
+{
     type: 'input',
     name: 'creditURL',
     message: 'Enter the URL/Filepath for the collaborator, third-party asset, or tutorial:',

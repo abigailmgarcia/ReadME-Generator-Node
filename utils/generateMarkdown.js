@@ -42,9 +42,9 @@ const generateMarkdown = (data, sections)  => {
     - [Tests](#test)\n
     - [Questions](#questions)\n
   ## Installation\n
-  ${sections.installation}\n
+  ${sections.Installation}\n
   ## Usage\n
-  ${data.usage}\n
+  ${data.Usage}\n
   ${sections.screenshot}\n
   ${sections.walkthrough}\n
   ## Contributors\n
@@ -54,7 +54,7 @@ const generateMarkdown = (data, sections)  => {
   ## License\n
   ${link}\n
   ## Tests\n
-  ${sections.tests}\n
+  ${sections.Tests}\n
   ## Questions\n
   Please visit my GitHub profile for more of my work:
   ${data.name}${data.github}\n

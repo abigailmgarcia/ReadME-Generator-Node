@@ -92,7 +92,7 @@ function init() {
 {
     type: "confirm",
     message: "Are there any contributors to your project?",
-    name: "Contributors",
+    name: "contributors",
     default: true,
 }, 
 {
@@ -105,7 +105,7 @@ function init() {
 {
     type: "confirm",
     message: "Did you use any resources to help you? ei: third parties or tutorials",
-    name: "Credits",
+    name: "credits",
     default: false
 }, 
 {
@@ -143,12 +143,13 @@ function init() {
 
 .then((data) => {
     const sections = {
-        Installation: data.Installation ? `-${data.Installation}` : '',
-        screenshot: data.screenshot ? `${data.screenshotText}${data.screenshotURL}` : '',
-        Credits: data.credits ? `${data.creditURL}` : '',
-        Contributor: data.contributors ? '[Contributor Covenant](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.txt' : `${data.contributingText}${data.contributingURL}`,
-        tests: data.tests ? `${data.testDescription}\n ${data.testAltText} ${data.testURL}` : '',
+        Installation: data.Installation ? `-${data.installSteps}` : '',
+        screenshot: data.screenshot ? `${data.screenshotText}${data.screenshotURL}` : '', 
         walkthrough: data.walkthrough ? `${data.walkthroughtext}${data.walkthroughURL}` : '',
+        credits: data.credits ? `${data.creditURL}` : '',
+        contributors: data.contributors ? '[Contributor Covenant](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.txt' : `${data.contributorText}${data.contributorURL}`,
+        tests: data.Tests ? `${data.testDescription}\n ${data.testAltText} ${data.testURL}` : '',
+      
     };
     fs.writeFile('README.md', generateMarkdown.generateMarkdown(data, sections), (err) => {
         if (err) {

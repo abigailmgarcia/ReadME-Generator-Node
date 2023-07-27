@@ -6,7 +6,7 @@ const renderLicenseBadge = function(license) {
   } else {
     return `![License ${license}](https://img.shields.io/badge/license-${license}-ff69b4)`
   }
-}
+};
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
@@ -34,26 +34,27 @@ const generateMarkdown = (data, sections)  => {
   ## Description\n
   ${data.Description}\n
   ## Table of Contents\n
-    - [Installation](#Installation)\n
-    - [Usage](#Usage)\n
-    - [Contributions](#Contributions)\n
-    - [Credits](#Credits)\n
-    - [License](#License)\n
-    - [Tests](#Test)\n
-    - [Questions](#Questions)\n
+    - [Installation](#installation)\n
+    - [Usage](#usage)\n
+    - [Contributions](#contributions)\n
+    - [Credits](#credits)\n
+    - [License](#license)\n
+    - [Tests](#test)\n
+    - [Questions](#questions)\n
   ## Installation\n
-  ${sections.Installation}\n
+  ${sections.installation}\n
   ## Usage\n
-  ${data.Usage}\n
+  ${data.usage}\n
   ${sections.screenshot}\n
+  ${sections.walkthrough}\n
   ## Contributors\n
-  ${sections.Contributors}\n
+  ${sections.contributors}\n
   ## Credits\n
-  ${sections.Credits}\n
+  ${sections.credits}\n
   ## License\n
   ${link}\n
   ## Tests\n
-  ${sections.Tests}\n
+  ${sections.tests}\n
   ## Questions\n
   Please visit my GitHub profile for more of my work:
   ${data.name}${data.github}\n

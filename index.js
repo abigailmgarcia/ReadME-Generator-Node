@@ -63,6 +63,24 @@ function init() {
     when: (data) => data.screenshot,
 },
 {
+    type: "confirm",
+    name: "walkthrough",
+    message: "would you like to add a video walkthrough?",
+    default: false,
+},
+{
+    type: "input",
+    name: "walkthroughtext",
+    message: "short description of video",
+    filter: (input) => data.walkthrough,
+},
+{
+    type: "input",
+    name: "walkthroughURL",
+    message: "enter the url/filepath for the video:",
+    when: (data) => data.walkthrough,
+},
+{
     type: "list",
     message: " What License are you using?",
     choices: ['None', 'MIT', 'Apache2.0', 'GNUGPLv3'],
@@ -87,7 +105,7 @@ function init() {
     message: "Did you use any resources to help you? ei: third parties or tutorials",
     name: "Credits",
     default: false
-}, 
+},
 {
     type: 'input',
     name: 'creditURL',

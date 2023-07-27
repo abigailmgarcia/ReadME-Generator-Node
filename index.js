@@ -105,7 +105,7 @@ function init() {
     message: "Did you use any resources to help you? ei: third parties or tutorials",
     name: "Credits",
     default: false
-},
+}, 
 {
     type: 'input',
     name: 'creditURL',

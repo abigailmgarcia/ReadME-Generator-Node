@@ -22,53 +22,45 @@ const renderLicenseLink = function(license) {
   };
 };
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-// const renderLicenseSection = function(license) {
-//   if(license){
-//     return 
-//   }
-// }
 
 // TODO: Create a function to generate markdown for README
 // why is in not reading this function
-function generateMarkdown(data) {
-  const badge = renderLicenseBadge(data.license);
-  const link = renderLicenseLink(data.license);
-  console.log(data.title)
-  return `# ${data.title}\n
-  ${badge}
+const generateMarkdown = (data, sections)  => {
+  const badge = renderLicenseBadge(data.License);
+  const link = renderLicenseLink(data.License);
+  console.log(data.Title)
+  return `# ${data.Title}\n
+  ${badge}\n
   ## Description\n
-  ${data.description}\n
+  ${data.Description}\n
   ## Table of Contents\n
-    - [Installation](#installation)\n
-    - [Usage](#usage)\n
-    - [Contributions](#contributions)\n
-    - [Credits](#credits)\n
-    - [License](#license)\n
-    - [Tests](#test)\n
-    - [Questions](#questions)\n
+    - [Installation](#Installation)\n
+    - [Usage](#Usage)\n
+    - [Contributions](#Contributions)\n
+    - [Credits](#Credits)\n
+    - [License](#License)\n
+    - [Tests](#Test)\n
+    - [Questions](#Questions)\n
   ## Installation\n
-  ${data.installation}\n
+  ${sections.Installation}\n
   ## Usage\n
-  ${data.usage}\n
-  ## Contributions\n
-  ${data.contributions}\n
+  ${data.Usage}\n
+  ${sections.screenshot}\n
+  ## Contributors\n
+  ${sections.Contributors}\n
   ## Credits\n
-  ${data.credits}\n
+  ${sections.Credits}\n
   ## License\n
-  ${licenseLink}\n
+  ${link}\n
   ## Tests\n
-  ${data.tests}\n
+  ${sections.Tests}\n
   ## Questions\n
   Please visit my GitHub profile for more of my work:
-  ${data.username}\n
+  ${data.name}${data.github}\n
   For any questions about this application you can contact:
-  ${data.email}
+  ${data.name}${data.Email}
 `;
 }
 
-// renderLicenseBadge(data.license);
-// renderLicenseLink(data.license);
 
-module.exports = {generateMarkdown};
+module.exports = { generateMarkdown };

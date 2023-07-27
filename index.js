@@ -71,13 +71,15 @@ function init() {
 {
     type: "input",
     name: "walkthroughtext",
-    message: "short description of video",
-    filter: (input) => data.walkthrough,
+    message: "short description of video:",
+    filter: (input)=> `[${input}]`,
+    when: (data) => data.walkthrough,
 },
 {
     type: "input",
     name: "walkthroughURL",
     message: "enter the url/filepath for the video:",
+    filter: (input) => `[${input}]`,
     when: (data) => data.walkthrough,
 },
 {
@@ -146,6 +148,7 @@ function init() {
         Credits: data.credits ? `${data.creditURL}` : '',
         Contributor: data.contributors ? '[Contributor Covenant](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.txt' : `${data.contributingText}${data.contributingURL}`,
         tests: data.tests ? `${data.testDescription}\n ${data.testAltText} ${data.testURL}` : '',
+        walkthrough: data.walkthrough ? `${data.walkthroughtext}${data.walkthroughURL}` : '',
     };
     fs.writeFile('README.md', generateMarkdown.generateMarkdown(data, sections), (err) => {
         if (err) {
